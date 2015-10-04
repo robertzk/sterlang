@@ -122,5 +122,16 @@ RGB = [ {R,G,B} || <<R:8,G:8,B:8>> <= Pixels ].
 
 **This can be used to do extremely fast flat file parsing**.
 
+Or you can turn *structured* data back into binary using *bit comprehension*.
 
+```erlang
+<< <<R:8, G:8, B:8>> ||  {R,G,B} <- RGB >>.
+% <<213,45,132,64,76,32,76,0,0,234,32,15>>
+
+% Be careful, as the elements of the resulting binary
+% require a clearly defined size if the generator returned binaries:
+<< <<Bin>> || Bin <- [<<3,7,5,4,7>>] >>. % exception
+<< <<Bin/binary>> || Bin <- [<<3,7,5,4,7>>] >>. 
+<< <<(X+1)/integer>> || <<X>> <= <<3,7,5,4,7>> >>.
+```
 
