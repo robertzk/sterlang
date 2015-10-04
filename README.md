@@ -49,6 +49,18 @@ Weather = [{toronto, rain}, {montreal, storms}, {london, fog},
 FoggyPlaces = [X || {X, fog} <- Weather]. % [london, boston]
 ```
 
+**Dealing with bits**
+
+Erlang is awesome at bit manipulation.
+
+```erlang
+Color = 16#F09A29.
+Pixel = <<Color:24>>.
+Pixels = <<213,45,132,64,76,32,76,0,0,234,32,15>>.
+<<Pix1:24, Pix2:24, Pix3:24, Pix4:24>> = Pixels.
+<<R:8, Rest/binary>> = Pixels.
+R. % 213
+```
 
 
 
