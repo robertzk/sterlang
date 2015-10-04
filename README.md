@@ -2,6 +2,9 @@
 
 Reading through [the book](http://learnyousomeerlang.com/starting-out-for-real).
 
+**Atoms are the equivalent of Ruby symbols**: They are turned to a categorical
+feature and stored once in memory.
+
 **Tuple unpacking**
 
 ```erlang
@@ -105,6 +108,9 @@ DataOffset:4, _Reserved:4, Flags:8, WindowSize:16,
 CheckSum: 16, UrgentPointer:16,
 Payload/binary>> = SomeBinary.
 ```
+
+The same logic can then be applied to anything binary:
+video encoding, images, other protocol implementations, etc.
 
 
 
