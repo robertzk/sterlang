@@ -62,6 +62,36 @@ Pixels = <<213,45,132,64,76,32,76,0,0,234,32,15>>.
 R. % 213
 ```
 
+**Type specification**
+
+* Values: integer | float | binary | bytes | bitstring | bits | utf8 | utf16 | utf32
+* Sign: signed | unsigned
+* Endianness: big | little | native
+* Unit: unit:Integer
+
+```erlang
+<<X1/unsigned>> =  <<-44>>. %  <<"Ô">>
+<<X2/signed>> =  <<-44>>.  % <<">>
+X2. % -44
+<<X2/integer-signed-little>> =  <<-44>>.
+X2. % -44
+<<N:8/unit:1>> = <<72>>. % <<"H">>
+N. % 72
+<<N/integer>> = <<72>>.
+<<Y:4/little-unit:8>> = <<72,0,0,0>>.  
+Y. 
+```
+
+**Bit manipulation**
+
+The standard binary operations (shifting bits to left and right, binary 'and',
+'or', 'xor', or 'not') also exist in Erlang.
+
+Just use the functions bsl (Bit Shift Left), bsr (Bit Shift Right),
+band, bor, bxor, and bnot.
+
+
+
 
 
 
