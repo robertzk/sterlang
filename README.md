@@ -90,6 +90,22 @@ The standard binary operations (shifting bits to left and right, binary 'and',
 Just use the functions bsl (Bit Shift Left), bsr (Bit Shift Right),
 band, bor, bxor, and bnot.
 
+```erlang
+2#00100 = 2#00010 bsl 1.
+2#00001 = 2#00010 bsr 1.
+2#10101 = 2#10001 bor 2#00101.
+```
+
+For example, now we can pattern match to TCP segments:
+
+```erlang
+<<SourcePort:16, DestinationPort:16,
+AckNumber:32,
+DataOffset:4, _Reserved:4, Flags:8, WindowSize:16,
+CheckSum: 16, UrgentPointer:16,
+Payload/binary>> = SomeBinary.
+```
+
 
 
 
